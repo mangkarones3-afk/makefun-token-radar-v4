@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar — which pre-token protocols are worth farming</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="mast">
+  <div class="mast-top">
+    <h1>Token Launch Radar</h1>
+    <div class="mast-meta" id="mastMeta"></div>
+  </div>
+  <p class="standfirst">Every protocol in the frozen DefiLlama snapshot, accounted for. The ones whose token
+  does not exist yet are priced by a model fitted on the ones whose token already trades — never by a
+  hand-set multiple — and each carries a farm plan priced in cents.</p>
+</header>
+
+<section class="strip" id="modelStrip" aria-label="Model summary"></section>
+<nav class="acct" id="acctBar" aria-label="Snapshot accounting"></nav>
+
+<div class="tabs" role="tablist">
+  <button data-view="board" class="tab on">The board</button>
+  <button data-view="method" class="tab">Method &amp; gate</button>
+  <button data-view="compare" class="tab">Compare</button>
+  <button data-view="aside" class="tab">Set aside</button>
+  <span class="tabs-right" id="sealLine"></span>
+</div>
+
+<main>
+  <section id="view-board">
+    <div class="farms-head">
+      <h2>Best farms at the selected plan size</h2>
+      <div class="scen" id="scenControls"></div>
+    </div>
+    <div class="farms" id="bestFarms"></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search name or slug…">
+      <select id="catFilter"><option value="">All categories</option></select>
+      <label class="chk"><input type="checkbox" id="watchOnly"> Watchlist only</label>
+      <label class="chk"><input type="checkbox" id="farmOnly"> Farm verdicts only</label>
+      <select id="sortBy">
+        <option value="rank">Sort: model rank</option>
+        <option value="tvl">Sort: TVL</option>
+        <option value="gross">Sort: implied value</option>
+        <option value="nethr">Sort: net per hour</option>
+        <option value="odds">Sort: launch odds</option>
+      </select>
+      <button id="csvBtn" type="button">Export CSV</button>
+      <span class="count" id="rowCount"></span>
+    </div>
+    <table class="board">
+      <thead><tr>
+        <th class="r">#</th><th>Protocol</th><th>Category</th><th class="r">TVL</th>
+        <th class="r">Implied if it launches</th><th class="r">Odds</th><th class="r">Board value</th>
+        <th>Value band (P25–P75 inside P10–P90)</th><th class="r">Net at scenario</th><th>Verdict</th>
+      </tr></thead>
+      <tbody id="boardBody"></tbody>
+    </table>
+    <p class="note" id="boardNote"></p>
+  </section>
+
+  <section id="view-detail" hidden></section>
+  <section id="view-method" hidden></section>
+  <section id="view-compare" hidden></section>
+  <section id="view-aside" hidden></section>
+</main>
+
+<footer id="foot"></footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
